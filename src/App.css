@@ -30,6 +30,7 @@ body{
     z-index: 1;
 }
 
+/* MovieCard */
 .movie-card{
     width: 300px;
     height: 200px;
@@ -131,4 +132,20 @@ body{
     box-sizing: border-box;
     padding-top: 15px;
     padding-bottom: 15px;
+}
+
+/* Movies */
+.movies-area h1{
+    margin: 15px 0;
+}
+
+.movie-list{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.movie-list a{
+    text-decoration: none;
+    color:white;
 }

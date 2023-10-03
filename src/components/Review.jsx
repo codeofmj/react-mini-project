@@ -7,7 +7,7 @@ const Review = ({id}) => {
     const reivewList = async () => {
         let res = await api.get(`/movie/${id}/reviews?language=en-US&page=1`)
 
-        console.log(res.data.results)
+        // console.log(res.data.results)
 
         setReview(res.data.results)
     }
