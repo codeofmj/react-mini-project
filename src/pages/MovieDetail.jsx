@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import { Badge } from 'react-bootstrap'
-import Review from '../components/Review'
 import { useParams } from 'react-router-dom'
 import api from '../api'
 
@@ -14,8 +13,19 @@ const MovieDetail = () => {
         setMovieInfo(res.data)
     }
 
+    const [review, setReview] = useState([])
+
+    const reivewList = async () => {
+        let res = await api.get(`/movie/${id}/reviews?language=en-US&page=1`)
+
+        // console.log(res.data.results)
+
+        setReview(res.data.results)
+    }
+
     useEffect(() => {
         getMovieDetail()
+        reivewList()
     }, [])
 
     if (movieInfo) {
@@ -49,7 +59,16 @@ const MovieDetail = () => {
                     </div> */}
                     </div>
                 </div>
-                <Review id={id} />
+                {/* <Review id={id} /> */}
+                <div className="container review-box">
+                    {review &&
+                        review.map((item) => (
+                            <div key={item.id} className="review-item">
+                                <h4>{item.author}</h4>
+                                <p>${item.content}</p>
+                            </div>
+                        ))}
+                </div>
             </div>
         )
     } else {

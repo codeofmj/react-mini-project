@@ -1,8 +1,17 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import { Container, Button, Form, Nav, Navbar } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 
 const Navigationbar = () => {
+
+    const ref = useRef();
+    const navigate = useNavigate()
+    
+    const goToList = (e) => {
+        
+        navigate(`/movieList/${ref.current.value}`)
+    }
+
     return (
         <Navbar expand="lg" variant="dark" bg="dark">
             <Container fluid>
@@ -26,8 +35,8 @@ const Navigationbar = () => {
                         </Link>
                     </Nav>
                     <Form className="d-flex">
-                        <Form.Control type="search" placeholder="Search" className="me-2" aria-label="Search" />
-                        <Button variant="outline-danger">Search</Button>
+                        <Form.Control type="search" placeholder="Search" className="me-2" aria-label="Search" ref={ref}/>
+                        <Button variant="outline-danger" onClick={goToList}>Search</Button>
                     </Form>
                 </Navbar.Collapse>
             </Container>

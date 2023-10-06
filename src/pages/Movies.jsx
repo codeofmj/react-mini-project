@@ -122,7 +122,7 @@ const Movies = () => {
                     </Col>
                     <Col sm={9} className="movie-list">
                         {filter.map((item) => (
-                            <Link to={`/movies/${item.id}`} key={item.id}>
+                            <Link to={`/movies/${item.id}`} key={item.id}> 
                                 <Card style={{ width: '11rem', margin: '5px', height:'23rem' }}>
                                     <Card.Img
                                         variant="top"
